@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Books{% endblock %}
+
+{% block content %}
+<h3>Available Books</h3>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Qty</th>
+        <th>Action</th>
+    </tr>
+
+    {% for book in books %}
+    <tr>
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.quantity }}</td>
+        <td>
+            <a class="btn btn-sm btn-primary" href="/borrow/{{ book.id }}">Borrow</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% if session.role == 'admin' %}
+<a class="btn btn-success" href="/add-book">➕ Add Book</a>
+{% endif %}
+{% endblock %}

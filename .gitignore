@@ -1,0 +1,21 @@
+# Python cache
+_pycache_/
+*.pyc
+
+# Virtual environment
+venv/
+env/
+
+# Database
+library.db
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor
+.idea/
+*.iml
+
+# Environment variables
+.env

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}My Books{% endblock %}
+
+{% block content %}
+<h3 class="mb-3">📘 My Borrowed Books</h3>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Borrow Date</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for book in books %}
+    <tr>
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.borrow_date }}</td>
+
+        <td>
+            {% if book.return_date %}
+                <span class="badge bg-success">Returned</span>
+            {% else %}
+                <span class="badge bg-warning">Borrowed</span>
+            {% endif %}
+        </td>
+
+        <td>
+            {% if not book.return_date %}
+                <a href="/return/{{ book.id }}" class="btn btn-sm btn-danger">
+                    Return
+                </a>
+            {% else %}
+                —
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
